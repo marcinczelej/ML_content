@@ -1,0 +1,15 @@
+﻿1. Put Dockerfile and requirements.txt into one directory
+2. to build image please type:
+
+docker build -t YOUR_TAG_HERE .
+
+3. copy notebooks into desired directory
+4. to run docker please type:
+
+docker run -it --rm -p 8888:8888 -p 6006:6006 -v FOLDER_WITH_NOTEBOOK_FILES:/shared/ YOUR_TAG_HERE:latest
+
+5. run below t ostart jupyter lab from constainer:
+
+jupyter lab --ip 0.0.0.0 --allow-root –no-browser
+
+6. go into ML_algorithms notebook to see content
