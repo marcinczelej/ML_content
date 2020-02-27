@@ -6,6 +6,7 @@ pandas
 pathlib
 sklearn
 pillow
+torch
 tf-nightly-gpu
 albumentations
 matplotlib
