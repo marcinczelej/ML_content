@@ -2,12 +2,12 @@
 setuptools
 click
 numpy
+ipywidgets
 pandas
 pathlib
 sklearn
 pillow
 torch
-tf-nightly-gpu
 albumentations
 matplotlib
 sklearn

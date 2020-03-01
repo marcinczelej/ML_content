@@ -9,7 +9,7 @@
 
 # The GPU capable builds (Python, NodeJS, C++, etc) depend on the same CUDA runtime as upstream TensorFlow.
 # Currently with TensorFlow 1.13 it depends on CUDA 10.0 and CuDNN v7.5.
-FROM nvidia/cuda:10.0-cudnn7-devel
+FROM nvcr.io/nvidia/tensorflow:20.02-tf2-py3
 
 RUN apt-get update \
   && apt-get install -y apt-utils \
@@ -34,6 +34,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN mkdir -p /tmp
 WORKDIR /tmp
+RUN apt-get update --fix-missing
 
 ADD requirements.txt /tmp
 RUN pip3 install --upgrade --no-cache -r requirements.txt
@@ -55,13 +56,13 @@ EXPOSE 6006
 RUN nodejs --version
 RUN npm --version
 
-RUN jupyter serverextension enable --py jupyterlab --sys-prefix
+#RUN jupyter serverextension enable --py jupyterlab --sys-prefix
 
-RUN jupyter labextension install @jupyterlab/toc --no-build && \
-    jupyter labextension install jupyterlab_tensorboard --no-build && \
+#RUN jupyter labextension install @jupyterlab/toc --no-build && \
+#    jupyter labextension install jupyterlab_tensorboard --no-build && \
     #jupyter labextension install jupyterlab_voyager --no-build && \
-    jupyter labextension install jupyter-matplotlib --no-build && \
-    jupyter lab build
+#    jupyter labextension install jupyter-matplotlib --no-build && \
+#    jupyter lab build
 
 
 #CMD jupyter lab --ip 0.0.0.0 --allow-root --no-browser
